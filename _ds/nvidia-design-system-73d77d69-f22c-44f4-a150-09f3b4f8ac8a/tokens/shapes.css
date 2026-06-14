@@ -1,0 +1,27 @@
+/* ============================================================
+   NVIDIA Design System — Shape & Elevation Tokens
+   Aggressively angular: 2px on every interactive element.
+   Effectively no drop-shadow elevation on content surfaces.
+   ============================================================ */
+
+:root {
+  /* --- Border radius --- */
+  --radius-none: 0px;   /* hero, footer, dark CTA strips, primary nav */
+  --radius-xs: 1px;     /* decorative micro-rules, inset accent strips */
+  --radius-sm: 2px;     /* EVERY interactive element — never 0, never >4 */
+  --radius-full: 9999px;/* avatar circles, social-icon dots */
+
+  /* --- Borders --- */
+  --border-hairline: 1px solid var(--color-hairline);
+  --border-hairline-strong: 1px solid var(--color-hairline-strong);
+  --border-primary-2: 2px solid var(--color-primary);
+  --border-on-dark-1: 1px solid var(--color-on-dark);
+
+  /* --- Elevation (used very sparingly) --- */
+  --shadow-none: none;
+  --shadow-sticky: 0 0 5px 0 rgba(0, 0, 0, 0.3); /* sticky chrome bars only */
+
+  /* --- Signature ornament --- */
+  --corner-square-size: 12px;       /* standard cards */
+  --corner-square-size-lg: 16px;    /* hero callouts */
+}

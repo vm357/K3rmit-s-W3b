@@ -1,0 +1,233 @@
+/* ============================================================
+   Kermit Webcraft — site-wide CSS (responsive + motion)
+   Loaded on every page after the DS token stylesheets.
+   ============================================================ */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--font-sans); background: var(--color-canvas); color: var(--color-ink); }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--color-primary); outline-offset: 2px;
+}
+
+/* Work card hover */
+.kw-work-card:hover .kw-work-overlay { opacity: 1; }
+
+/* Services offering cards: subtle border-to-green on hover (DS interactive
+   color transition; cards never lift). */
+.kw-offer-card { transition: border-color 120ms linear; }
+.kw-offer-card:hover { border-color: var(--color-primary) !important; }
+
+/* Ambient green "breathing" glow on dark sections */
+@keyframes kwPulse {
+  0%, 100% { opacity: .45; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.12); }
+}
+.kw-pulse {
+  animation: kwPulse 7s ease-in-out infinite;
+  will-change: opacity, transform;
+  transform-origin: 80% 15%;
+}
+
+/* ===== Hero "capabilities" FX: panning grid + drifting aurora + scan ===== */
+.kw-fx { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+
+/* ---- Bokeh field: out-of-focus dewdrops drifting behind the web ---- */
+.kw-bokeh { position: absolute; inset: 0; will-change: transform; }
+.kw-bokeh i {
+  position: absolute; border-radius: 50%;
+  background: radial-gradient(circle at 38% 35%,
+              color-mix(in srgb, #eafbe0 78%, var(--color-primary)) 0%,
+              color-mix(in srgb, var(--color-primary) 60%, transparent) 36%,
+              transparent 70%);
+  filter: blur(2.5px);
+  mix-blend-mode: screen;
+  opacity: var(--op, .35);
+  animation: kwTwinkle ease-in-out infinite;
+}
+@keyframes kwTwinkle {
+  0%, 100% { opacity: calc(var(--op) * 0.5); transform: scale(0.94); }
+  50%      { opacity: var(--op);             transform: scale(1.06); }
+}
+
+/* ---- The web: faint silk + strings of dew beads ---- */
+.kw-web {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  -webkit-mask-image: radial-gradient(120% 125% at 83% 50%, #000 10%, transparent 68%);
+  mask-image: radial-gradient(120% 125% at 83% 50%, #000 10%, transparent 68%);
+  opacity: .96;
+}
+.kw-silk path {
+  fill: none;
+  stroke: color-mix(in srgb, #dfeee0 16%, transparent);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.kw-beads circle {
+  fill: color-mix(in srgb, #f4fff0 72%, var(--color-primary));
+}
+.kw-beads { filter: drop-shadow(0 0 1.6px color-mix(in srgb, var(--color-primary) 55%, transparent)); }
+.kw-bead-bright {
+  fill: #f6fff2;
+  animation: kwGlint 5s ease-in-out infinite;
+}
+@keyframes kwGlint {
+  0%, 100% { opacity: .7; }
+  50%      { opacity: 1; }
+}
+.kw-fx-blob { position: absolute; border-radius: 50%; filter: blur(64px); mix-blend-mode: screen; will-change: transform; }
+.kw-fx-blob.b1 { width: 44vw; height: 44vw; left: 52%; top: -12%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-primary) 60%, transparent), transparent 65%);
+  animation: kwDrift1 15s ease-in-out infinite; }
+.kw-fx-blob.b2 { width: 34vw; height: 34vw; left: 3%; top: 34%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-primary) 42%, transparent), transparent 66%);
+  animation: kwDrift2 19s ease-in-out infinite; }
+.kw-fx-blob.b3 { width: 26vw; height: 26vw; left: 74%; top: 52%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-primary) 50%, transparent), transparent 66%);
+  animation: kwDrift1 23s ease-in-out infinite reverse; }
+@keyframes kwDrift1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-7%, 7%) scale(1.22); } }
+@keyframes kwDrift2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(9%, -5%) scale(1.3); } }
+
+.kw-fx-scan {
+  position: absolute; left: 0; right: 0; top: 0; height: 45%;
+  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--color-primary) 12%, transparent), transparent);
+  animation: kwScan 8s ease-in-out infinite;
+}
+@keyframes kwScan {
+  0% { transform: translateY(-60%); opacity: 0; }
+  25% { opacity: .8; }
+  60% { opacity: .25; }
+  100% { transform: translateY(190%); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kw-pulse { animation: none; opacity: .7; }
+  .kw-fx-blob { animation: none; }
+  .kw-bokeh i { animation: none; }
+  .kw-bead-bright { animation: none; opacity: .9; }
+}
+
+/* Hero dashboard chart: one-shot line draw + pulsing live dot */
+@keyframes kwDraw { from { stroke-dashoffset: 820; } to { stroke-dashoffset: 0; } }
+.kw-chart-line { stroke-dasharray: 820; animation: kwDraw 2s ease-out forwards; }
+@keyframes kwDotRing {
+  0%   { transform: scale(1);   opacity: .9; }
+  70%  { transform: scale(3.4); opacity: 0; }
+  100% { transform: scale(3.4); opacity: 0; }
+}
+.kw-dot-ring { transform-box: fill-box; transform-origin: center; animation: kwDotRing 2.4s ease-out infinite; }
+@keyframes kwDotBlink { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+.kw-dot { animation: kwDotBlink 1.8s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .kw-chart-line { animation: none; stroke-dasharray: none; }
+  .kw-dot-ring, .kw-dot { animation: none; }
+}
+
+/* Wireframe bars/cards are static and always visible. (Earlier a CSS
+   "build" animation hid them via from-keyframes; some embedded previews
+   freeze the animation clock at t=0, leaving them stuck hidden — so the
+   visible state is now the plain base style with no animation.) */
+.kw-wire-bar { opacity: 1; }
+.kw-wire-card { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .kw-wire-bar, .kw-wire-card { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---- Responsive grids ---- */
+@media (max-width: 980px) {
+  .kw-grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+  .kw-hero-split { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 760px) {
+  .kw-grid-3 { grid-template-columns: 1fr !important; }
+  .kw-grid-2 { grid-template-columns: 1fr !important; }
+  .kw-nav-links { display: none !important; }
+  .kw-nav-cta { display: none !important; }
+  .kw-burger { display: inline-flex !important; }
+  .kw-footer-grid { grid-template-columns: 1fr 1fr !important; }
+  .kw-list-2 { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 560px) {
+  .kw-grid-4 { grid-template-columns: 1fr !important; }
+  .kw-footer-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ---- Mobile hamburger menu ---- */
+.kw-burger {
+  display: none;               /* shown only ≤760px via the breakpoint above */
+  align-items: center; justify-content: center;
+  width: 44px; height: 44px;   /* ≥44px hit target */
+  margin-right: -8px;          /* optical align to the bar's right padding */
+  background: transparent; border: 0; padding: 0; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.kw-burger-box {
+  position: relative; width: 24px; height: 16px;
+  display: inline-block;
+}
+.kw-burger-line {
+  position: absolute; left: 0; width: 100%; height: 2px;
+  background: var(--color-on-dark); border-radius: var(--radius-sm);
+  transition: transform .2s linear, opacity .15s linear, top .2s linear;
+}
+.kw-burger-line:nth-child(1) { top: 0; }
+.kw-burger-line:nth-child(2) { top: 7px; }
+.kw-burger-line:nth-child(3) { top: 14px; }
+.kw-burger-box.is-open .kw-burger-line:nth-child(1) { top: 7px; transform: rotate(45deg); }
+.kw-burger-box.is-open .kw-burger-line:nth-child(2) { opacity: 0; }
+.kw-burger-box.is-open .kw-burger-line:nth-child(3) { top: 7px; transform: rotate(-45deg); }
+
+.kw-mobile-menu {
+  position: absolute; top: 98px; right: 0; left: 0;   /* 30 utility + 68 bar */
+  background: var(--color-surface-dark);
+  border-top: 1px solid var(--color-hairline-strong);
+  padding: var(--space-sm) clamp(20px, 5vw, 48px) var(--space-lg);
+  transform: translateY(-8px);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity .15s linear, transform .15s linear, visibility 0s linear .15s;
+  z-index: 49;
+}
+.kw-mobile-menu.is-open {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateY(0);
+  transition: opacity .15s linear, transform .15s linear, visibility 0s linear 0s;
+}
+.kw-mobile-links { display: flex; flex-direction: column; }
+.kw-mobile-link {
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 52px; padding: 0 2px;
+  color: var(--color-on-dark-mute);
+  font: 700 18px/1.3 var(--font-sans); text-decoration: none;
+  border-bottom: 1px solid var(--color-hairline-strong);
+  transition: color .12s linear;
+}
+.kw-mobile-link .kw-mobile-arrow {
+  color: var(--color-primary); opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity .12s linear, transform .12s linear;
+}
+.kw-mobile-link.is-active { color: var(--color-on-dark); }
+.kw-mobile-link.is-active .kw-mobile-arrow,
+.kw-mobile-link:hover .kw-mobile-arrow { opacity: 1; transform: translateX(0); }
+.kw-mobile-link:hover { color: var(--color-on-dark); }
+.kw-mobile-cta { margin-top: var(--space-lg); }
+.kw-mobile-cta a { width: 100%; justify-content: center; }
+
+.kw-mobile-scrim {
+  position: fixed; inset: 98px 0 0; z-index: 48;
+  background: rgba(0,0,0,.45);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity .15s linear, visibility 0s linear .15s;
+}
+.kw-mobile-scrim.is-open {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transition: opacity .15s linear;
+}
+/* Hide the menu/scrim entirely on desktop regardless of React state. */
+@media (min-width: 761px) {
+  .kw-mobile-menu, .kw-mobile-scrim { display: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kw-burger-line, .kw-mobile-menu, .kw-mobile-scrim,
+  .kw-mobile-link, .kw-mobile-arrow { transition: none !important; }
+}

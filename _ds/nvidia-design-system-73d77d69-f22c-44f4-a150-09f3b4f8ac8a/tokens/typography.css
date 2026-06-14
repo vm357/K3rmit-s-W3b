@@ -1,0 +1,65 @@
+/* ============================================================
+   NVIDIA Design System — Typography Tokens
+   Brand-locked: NVIDIA-EMEA (substitute: Inter) at weights 400/700.
+   Hierarchy is built from SIZE + WEIGHT — never color tinting.
+   12-tier scale from utility-xs (10px) to display-xl (48px).
+   ============================================================ */
+
+:root {
+  /* Families */
+  --font-sans: "Inter", "NVIDIA-EMEA", Arial, Helvetica, sans-serif;
+  --font-icon: "Font Awesome 6 Pro", "Font Awesome 6 Free";
+
+  /* Weights */
+  --weight-regular: 400;
+  --weight-bold: 700;
+
+  /* ---- Type scale: size / weight / line-height / letter-spacing ---- */
+
+  /* Display */
+  --type-display-xl-size: 48px;  --type-display-xl-weight: 700; --type-display-xl-lh: 1.25; --type-display-xl-ls: 0;
+  --type-display-lg-size: 36px;  --type-display-lg-weight: 700; --type-display-lg-lh: 1.25; --type-display-lg-ls: 0;
+
+  /* Headings */
+  --type-heading-xl-size: 24px;  --type-heading-xl-weight: 700; --type-heading-xl-lh: 1.25; --type-heading-xl-ls: 0;
+  --type-heading-lg-size: 22px;  --type-heading-lg-weight: 400; --type-heading-lg-lh: 1.75; --type-heading-lg-ls: 0;
+  --type-heading-md-size: 20px;  --type-heading-md-weight: 700; --type-heading-md-lh: 1.25; --type-heading-md-ls: 0;
+  --type-heading-sm-size: 18px;  --type-heading-sm-weight: 700; --type-heading-sm-lh: 1.4;  --type-heading-sm-ls: 0;
+
+  /* Card title */
+  --type-card-title-size: 17px;  --type-card-title-weight: 700; --type-card-title-lh: 1.47; --type-card-title-ls: 0;
+
+  /* Body */
+  --type-body-md-size: 16px;     --type-body-md-weight: 400; --type-body-md-lh: 1.5; --type-body-md-ls: 0;
+  --type-body-strong-size: 16px; --type-body-strong-weight: 700; --type-body-strong-lh: 1.5; --type-body-strong-ls: 0;
+  --type-body-sm-size: 15px;     --type-body-sm-weight: 400; --type-body-sm-lh: 1.67; --type-body-sm-ls: 0;
+
+  /* Buttons */
+  --type-button-lg-size: 18px;   --type-button-lg-weight: 700; --type-button-lg-lh: 1.25; --type-button-lg-ls: 0;
+  --type-button-md-size: 16px;   --type-button-md-weight: 700; --type-button-md-lh: 1.25; --type-button-md-ls: 0;
+  --type-button-sm-size: 14.4px; --type-button-sm-weight: 700; --type-button-sm-lh: 1;    --type-button-sm-ls: 0.144px;
+
+  /* Link */
+  --type-link-md-size: 15px;     --type-link-md-weight: 400; --type-link-md-lh: 1.5; --type-link-md-ls: 0;
+
+  /* Captions / utility */
+  --type-caption-md-size: 14px;  --type-caption-md-weight: 700; --type-caption-md-lh: 1.43; --type-caption-md-ls: 0;
+  --type-caption-sm-size: 12px;  --type-caption-sm-weight: 400; --type-caption-sm-lh: 1.25; --type-caption-sm-ls: 0;
+  --type-caption-xs-size: 11px;  --type-caption-xs-weight: 700; --type-caption-xs-lh: 1;    --type-caption-xs-ls: 0;
+  --type-utility-xs-size: 10px;  --type-utility-xs-weight: 700; --type-utility-xs-lh: 1.5;  --type-utility-xs-ls: 0;
+}
+
+/* ---- Convenience composite classes (optional helpers) ---- */
+.t-display-xl { font: var(--type-display-xl-weight) var(--type-display-xl-size)/var(--type-display-xl-lh) var(--font-sans); letter-spacing: var(--type-display-xl-ls); }
+.t-display-lg { font: var(--type-display-lg-weight) var(--type-display-lg-size)/var(--type-display-lg-lh) var(--font-sans); letter-spacing: var(--type-display-lg-ls); }
+.t-heading-xl { font: var(--type-heading-xl-weight) var(--type-heading-xl-size)/var(--type-heading-xl-lh) var(--font-sans); letter-spacing: var(--type-heading-xl-ls); }
+.t-heading-lg { font: var(--type-heading-lg-weight) var(--type-heading-lg-size)/var(--type-heading-lg-lh) var(--font-sans); letter-spacing: var(--type-heading-lg-ls); }
+.t-heading-md { font: var(--type-heading-md-weight) var(--type-heading-md-size)/var(--type-heading-md-lh) var(--font-sans); letter-spacing: var(--type-heading-md-ls); }
+.t-heading-sm { font: var(--type-heading-sm-weight) var(--type-heading-sm-size)/var(--type-heading-sm-lh) var(--font-sans); letter-spacing: var(--type-heading-sm-ls); }
+.t-card-title { font: var(--type-card-title-weight) var(--type-card-title-size)/var(--type-card-title-lh) var(--font-sans); letter-spacing: var(--type-card-title-ls); }
+.t-body-md    { font: var(--type-body-md-weight) var(--type-body-md-size)/var(--type-body-md-lh) var(--font-sans); letter-spacing: var(--type-body-md-ls); }
+.t-body-strong{ font: var(--type-body-strong-weight) var(--type-body-strong-size)/var(--type-body-strong-lh) var(--font-sans); letter-spacing: var(--type-body-strong-ls); }
+.t-body-sm    { font: var(--type-body-sm-weight) var(--type-body-sm-size)/var(--type-body-sm-lh) var(--font-sans); letter-spacing: var(--type-body-sm-ls); }
+.t-caption-md { font: var(--type-caption-md-weight) var(--type-caption-md-size)/var(--type-caption-md-lh) var(--font-sans); letter-spacing: var(--type-caption-md-ls); }
+.t-caption-sm { font: var(--type-caption-sm-weight) var(--type-caption-sm-size)/var(--type-caption-sm-lh) var(--font-sans); letter-spacing: var(--type-caption-sm-ls); }
+.t-utility-xs { font: var(--type-utility-xs-weight) var(--type-utility-xs-size)/var(--type-utility-xs-lh) var(--font-sans); letter-spacing: var(--type-utility-xs-ls); text-transform: uppercase; }

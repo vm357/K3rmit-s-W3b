@@ -1,0 +1,25 @@
+/* ============================================================
+   NVIDIA Design System — Spacing Tokens
+   Base unit: 8px. Section rhythm (64px) governs vertical gaps
+   between major blocks. Whitespace is structural, not atmospheric.
+   ============================================================ */
+
+:root {
+  --space-xxs: 2px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;   /* card grid gutter, default in-card padding */
+  --space-xxl: 32px;  /* dense in-card padding (feature/stat cards) */
+  --space-section: 64px; /* vertical gap between major content blocks */
+
+  /* Hero chapter padding — largest in the system */
+  --space-hero-y: 80px;
+  --space-hero-x: 48px;
+
+  /* Layout */
+  --container-max: 1280px;
+  --gutter: 24px;
+  --gutter-wide: 48px;
+}

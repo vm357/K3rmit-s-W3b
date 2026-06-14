@@ -1,0 +1,44 @@
+/* ============================================================
+   NVIDIA Design System — Color Tokens
+   Single-accent system: NVIDIA Green carries every CTA, active
+   state, and decorative motif. Everything else is monochrome.
+   ============================================================ */
+
+:root {
+  /* --- Brand & Accent --- */
+  --color-primary: #76b900;          /* NVIDIA Green — the brand */
+  --color-primary-dark: #5a8d00;     /* pressed state for primary CTA */
+  --color-on-primary: #000000;       /* text on green fill */
+  --color-accent-green-pale: #bff230;/* rare editorial highlight tint */
+
+  /* --- Surface --- */
+  --color-canvas: #ffffff;           /* page body */
+  --color-surface-soft: #f7f7f7;     /* breadcrumb, sub-nav, alt rows */
+  --color-surface-dark: #000000;     /* hero/footer/nav frame color */
+  --color-surface-elevated: #1a1a1a; /* nested dark panels in footer */
+  --color-hairline: #cccccc;         /* 1px card border, table rule */
+  --color-hairline-strong: #5e5e5e;  /* 1px divider on dark surfaces */
+
+  /* --- Text --- */
+  --color-ink: #000000;              /* headlines/body on canvas */
+  --color-body: #1a1a1a;             /* long-form paragraph text */
+  --color-mute: #757575;             /* metadata, breadcrumb separators */
+  --color-stone: #898989;            /* least-emphasis / disabled text */
+  --color-ash: #a7a7a7;              /* disabled icon, faint utility text */
+  --color-on-dark: #ffffff;          /* primary text on dark surface */
+  --color-on-dark-mute: rgba(255, 255, 255, 0.7); /* secondary on dark */
+
+  /* --- Semantic --- */
+  --color-error: #e52020;
+  --color-error-deep: #650b0b;
+  --color-warning: #df6500;
+  --color-warning-bright: #ef9100;   /* inverse warning on dark */
+  --color-success-deep: #3f8500;     /* positive confirm w/o green clash */
+  --color-link-blue: #0046a4;        /* inline prose links on light ONLY */
+
+  /* --- Editorial Accents (sparingly, inside long-form content) --- */
+  --color-accent-purple: #952fc6;
+  --color-accent-purple-deep: #4d1368;
+  --color-accent-purple-pale: #f9d4ff;
+  --color-accent-yellow-pale: #feeeb2;
+}

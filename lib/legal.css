@@ -1,0 +1,124 @@
+/* ============================================================
+   Kermit Webcraft — long-form legal pages (Privacy / Terms / etc.)
+   Maps the imported Termly markup onto the NVIDIA design tokens:
+   black chapter header, white reading column, single green accent.
+   ============================================================ */
+
+.kw-legal { background: var(--color-canvas); }
+
+/* Dark chapter header — brackets the white reading column below. */
+.kw-legal-head {
+  background: var(--color-surface-dark);
+  padding: clamp(48px, 6vw, 80px) clamp(20px, 5vw, 48px);
+}
+.kw-legal-head-inner { max-width: 820px; margin: 0 auto; }
+.kw-legal-eyebrow {
+  display: inline-block;
+  color: var(--color-primary);
+  font: 700 13px/1.43 var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: .7px;
+  margin-bottom: var(--space-sm);
+}
+.kw-legal-title {
+  margin: 0;
+  color: var(--color-on-dark);
+  font: 700 clamp(32px, 4.5vw, 46px)/1.06 var(--font-sans);
+  letter-spacing: -0.02em;
+}
+.kw-legal-sub {
+  margin: var(--space-md) 0 0;
+  color: var(--color-on-dark-mute);
+  font: 400 17px/1.6 var(--font-sans);
+  max-width: 560px;
+}
+
+/* Reading column. */
+.kw-legal-body {
+  display: block;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: clamp(40px, 5vw, 64px) clamp(20px, 5vw, 48px) clamp(56px, 7vw, 96px);
+}
+
+/* Force our typeface over Termly's Arial !important rules. */
+.kw-legal-body,
+.kw-legal-body * { font-family: var(--font-sans) !important; }
+
+/* Body copy. */
+.kw-legal-body,
+.kw-legal-body [data-custom-class="body_text"],
+.kw-legal-body [data-custom-class="body_text"] * {
+  color: var(--color-body) !important;
+  font-size: 16px !important;
+  line-height: 1.7 !important;
+}
+.kw-legal-body div { margin-bottom: 2px; }
+
+/* The dark header already states the title — hide the imported duplicate,
+   keep the "Last updated" subtitle. */
+.kw-legal-body [data-custom-class="title"] { display: none !important; }
+
+/* Document title / subtitle that live inside the imported markup. */
+.kw-legal-body [data-custom-class="title"],
+.kw-legal-body [data-custom-class="title"] * {
+  color: var(--color-ink) !important;
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+}
+.kw-legal-body [data-custom-class="subtitle"],
+.kw-legal-body [data-custom-class="subtitle"] * {
+  color: var(--color-mute) !important;
+  font-size: 14px !important;
+}
+
+/* Headings. */
+.kw-legal-body [data-custom-class="heading_1"],
+.kw-legal-body [data-custom-class="heading_1"] * {
+  color: var(--color-ink) !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+}
+.kw-legal-body [data-custom-class="heading_2"],
+.kw-legal-body [data-custom-class="heading_2"] * {
+  color: var(--color-ink) !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+}
+.kw-legal-body h1 { margin: 0 0 var(--space-sm); }
+.kw-legal-body [data-custom-class="heading_1"] { margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-hairline); }
+.kw-legal-body [data-custom-class="heading_2"] { margin-top: var(--space-lg); }
+
+/* Links — single permitted prose blue, except green on the dark header. */
+.kw-legal-body a,
+.kw-legal-body [data-custom-class="link"],
+.kw-legal-body [data-custom-class="link"] * {
+  color: var(--color-link-blue) !important;
+  word-break: break-word;
+}
+
+/* Lists. */
+.kw-legal-body ul,
+.kw-legal-body ol { margin: var(--space-sm) 0 var(--space-md); padding-left: 1.5em; }
+.kw-legal-body li { margin-bottom: 6px; }
+.kw-legal-body ul { list-style-type: square; }
+.kw-legal-body ul ul { list-style-type: circle; }
+.kw-legal-body ul ul ul { list-style-type: square; }
+
+/* Tables (data-rights matrices etc.). */
+.kw-legal-body table { border-collapse: collapse; width: 100%; margin: var(--space-md) 0; }
+.kw-legal-body th,
+.kw-legal-body td {
+  border: 1px solid var(--color-hairline) !important;
+  padding: 10px 12px !important;
+  text-align: left;
+  vertical-align: top;
+}
+.kw-legal-body th { background: var(--color-surface-soft); }
+
+/* Trim Termly's stacked empty spacer divs so the page doesn't get gappy. */
+.kw-legal-body br + br { display: none; }
+.kw-legal-body div:has(> br:only-child) { display: none; }

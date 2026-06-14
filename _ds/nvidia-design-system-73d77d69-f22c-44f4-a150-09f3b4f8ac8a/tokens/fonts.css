@@ -1,0 +1,15 @@
+/* ============================================================
+   NVIDIA Design System — Fonts
+   ------------------------------------------------------------
+   NVIDIA-EMEA is PROPRIETARY and cannot be redistributed. Per the
+   brand spec, the closest open-source match is Inter (weights
+   400/700) — x-height and stroke contrast match within ~2% at body
+   sizes. Arial is the documented system fallback.
+
+   >>> SUBSTITUTION FLAG: Inter stands in for NVIDIA-EMEA. If you
+       hold a license for NVIDIA-EMEA, drop the .woff2 files into
+       assets/fonts/ and replace the @import below with @font-face
+       rules pointing at them.
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
