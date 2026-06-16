@@ -204,7 +204,7 @@ function Footer() {
                       padding: "var(--space-xl) 0", flexWrap: "wrap" }}>
           <span style={{ color: "var(--color-mute)", font: "700 10px/1.5 var(--font-sans)",
                          textTransform: "uppercase", letterSpacing: ".5px" }}>
-            © 2026 Kermit Webcraft · It’s not easy being seen. We make it easier.
+            © 2026 Kermit Webcraft. All Rights Reserved · It’s not easy being seen. We make it easier.
           </span>
           <span style={{ display: "inline-flex", alignItems: "center", gap: "var(--space-sm)", color: "var(--color-mute)", font: "400 12px/1.25 var(--font-sans)" }}>
             <a href="Privacy.html" style={{ color: "var(--color-on-dark-mute)", textDecoration: "none" }}
