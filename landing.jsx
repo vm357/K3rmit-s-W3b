@@ -35,9 +35,9 @@ function Hero({ dark, layout }) {
     </p>;
 
   const ctas =
-  <div style={{ display: "flex", gap: "var(--space-md)", flexWrap: "wrap" }}>
-      <Button variant="primary" size="lg" as="a" href="Contact.html">Start a project</Button>
-      <Button variant={dark ? "outline-on-dark" : "outline"} size="lg" as="a" href="Work.html">See our work</Button>
+  <div style={{ display: "flex", gap: "var(--space-md)", flexWrap: "wrap" }} className="kw-hero-ctas">
+      <Button variant="primary" size="lg" as="a" href="Contact.html" className="kw-cta-btn kw-cta-btn--primary">Start a project</Button>
+      <Button variant={dark ? "outline-on-dark" : "outline"} size="lg" as="a" href="Projects.html" className={"kw-cta-btn " + (dark ? "kw-cta-btn--outline" : "kw-cta-btn--outline-light")}>See our work</Button>
     </div>;
 
   const miniStats =
@@ -207,28 +207,28 @@ function Stats() {
 
 /* ---------- WORK PREVIEW ---------- */
 const FEATURED = [
-{ t: "Angel’s Home Improvement", cat: "Home Services", g: "linear-gradient(135deg,#0f2a16,#1f5e2e)", tag: "Design + Build" },
-{ t: "Andelina Beauty", cat: "Beauty", g: "linear-gradient(135deg,#3a0f22,#7c1f4a)", tag: "Rebuild" },
-{ t: "United Automotive Consultants", cat: "Automotive", g: "linear-gradient(135deg,#2a230f,#5e4b1c)", tag: "Design + Build" }];
+{ t: "P&E Remodeling Solutions", cat: "Construction", g: "linear-gradient(135deg,#10243a,#1c6e8e)", tag: "Design + Build" },
+{ t: "Buckle Up", cat: "Professional", g: "linear-gradient(135deg,#10161d,#1f3550)", tag: "Design + Build" },
+{ t: "Casa Bueno", cat: "Professional", g: "linear-gradient(135deg,#0e2a24,#1f7a63)", tag: "Rebuild" }];
 
 function WorkPreview() {
   return (
     <section style={{ background: "var(--color-canvas)", padding: PAD }}>
       <div style={WRAP}>
         <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "var(--space-lg)", marginBottom: "var(--space-xl)", flexWrap: "wrap" }}>
-          <Reveal>
+          <Reveal y={24}>
             <div style={{ color: "var(--color-mute)", font: "700 13px/1.43 var(--font-sans)", textTransform: "uppercase", letterSpacing: ".7px", marginBottom: "var(--space-sm)" }}>Selected work</div>
             <h2 style={{ margin: 0, color: "var(--color-ink)", font: "700 clamp(28px,3.5vw,38px)/1.15 var(--font-sans)", letterSpacing: "-0.01em" }}>
               Recent ponds we’ve tended.
             </h2>
           </Reveal>
-          <Reveal delay={80}><Button variant="ghost-link" as="a" href="Work.html">View all work</Button></Reveal>
+          <Reveal delay={80}><Button variant="ghost-link" as="a" href="Projects.html">View all work</Button></Reveal>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "var(--space-xl)" }} className="kw-grid-3">
           {FEATURED.map((w, i) =>
-          <Reveal key={w.t} delay={i * 90}>
-              <a href="Work.html" style={{ textDecoration: "none", display: "block" }} className="kw-work-card">
-                <Card cornerSquare padding="none" style={{ overflow: "hidden", height: "100%" }}>
+          <Reveal key={w.t} delay={i * 110} y={28}>
+              <a href="Projects.html" style={{ textDecoration: "none", display: "block" }} className="kw-work-card">
+                <Card cornerSquare padding="none" className="kw-card-inner" style={{ overflow: "hidden", height: "100%" }}>
                   <div style={{ position: "relative", width: "100%", aspectRatio: "4 / 3", containerType: "inline-size", background: "var(--color-surface-soft)", overflow: "hidden", borderBottom: "1px solid var(--color-hairline)" }}>
                     <SiteMock title={w.t} />
                     <div className="kw-work-overlay" style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(0,0,0,.45)", opacity: 0, transition: "opacity .15s linear", zIndex: 3 }}>
@@ -260,8 +260,8 @@ function CtaBridge() {
           <p style={{ margin: "var(--space-sm) 0 0", color: "var(--color-on-dark-mute)", font: "400 16px/1.5 var(--font-sans)" }}>Tell us about your project. We reply within a day.</p>
         </div>
         <div style={{ display: "flex", gap: "var(--space-md)", flexWrap: "wrap" }}>
-          <Button variant="primary" size="lg" as="a" href="Contact.html">Start a project</Button>
-          <Button variant="outline-on-dark" size="lg" as="a" href="Work.html">See the work</Button>
+          <Button variant="primary" size="lg" as="a" href="Contact.html" className="kw-cta-btn kw-cta-btn--primary">Start a project</Button>
+          <Button variant="outline-on-dark" size="lg" as="a" href="Projects.html" className="kw-cta-btn kw-cta-btn--outline">See the work</Button>
         </div>
       </div>
     </section>);

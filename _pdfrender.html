@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><style>body{margin:0;background:#fff}#c{display:block}</style></head>
+<body>
+<div id="status">loading…</div>
+<canvas id="c"></canvas>
+<script type="module">
+import * as pdfjs from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.7.76/build/pdf.min.mjs';
+pdfjs.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.7.76/build/pdf.worker.min.mjs';
+const status = document.getElementById('status');
+try {
+  const data = await (await fetch('uploads/Buckle Up home page.pdf')).arrayBuffer();
+  const pdf = await pdfjs.getDocument({ data }).promise;
+  const scale = 2.2;
+  const pages = [];
+  for (let i=1;i<=pdf.numPages;i++){
+    const page = await pdf.getPage(i);
+    const vp = page.getViewport({ scale });
+    const cv = document.createElement('canvas');
+    cv.width = vp.width; cv.height = vp.height;
+    await page.render({ canvasContext: cv.getContext('2d'), viewport: vp }).promise;
+    pages.push(cv);
+  }
+  const W = Math.max(...pages.map(p=>p.width));
+  const H = pages.reduce((s,p)=>s+p.height,0);
+  const out = document.getElementById('c');
+  out.width = W; out.height = H;
+  const ctx = out.getContext('2d');
+  ctx.fillStyle='#fff'; ctx.fillRect(0,0,W,H);
+  let y=0; for(const p of pages){ ctx.drawImage(p,0,y); y+=p.height; }
+  status.textContent = 'done ' + W + 'x' + H;
+  status.setAttribute('data-done','1');
+  window.__dataurl = out.toDataURL('image/png');
+} catch(e){ status.textContent = 'ERR: ' + e.message; }
+</script>
+</body>
+</html>

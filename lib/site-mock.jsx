@@ -16,6 +16,7 @@ const SITE_THEMES = {
            photo: "linear-gradient(150deg,#e6c098,#a9703c 55%,#5f3c20)" } },
   "P&E Remodeling Solutions": {
     short: "P&E", layout: "imageHero",
+    img: "assets/work/pe-remodeling-solutions.png",
     headline: "Remodels done right.", sub: "Kitchens, baths, and whole-home builds across the tri-state.",
     pal: { bg: "#10161d", ink: "#fff", sub: "rgba(255,255,255,.78)", accent: "#e0a82e",
            photo: "linear-gradient(155deg,#6a7c8c,#33454f 55%,#161f27)" } },
@@ -26,12 +27,14 @@ const SITE_THEMES = {
     pal: { bg: "#0f1622", ink: "#fff", sub: "rgba(255,255,255,.74)", accent: "#3d83d6",
            photo: "linear-gradient(150deg,#43577a,#1f2d44 55%,#0c1220)" } },
   "Casa Bueno": {
-    short: "Casa Bueno", layout: "centered", light: true,
+    short: "Casa Bueno", layout: "imageHero",
+    img: "assets/work/casa-bueno.png",
     headline: "Roasted fresh daily.", sub: "Small-batch beans, shipped the morning they’re roasted.",
     pal: { bg: "#f6efe6", ink: "#2a1d12", sub: "#857461", accent: "#8a5a2b",
            photo: "linear-gradient(150deg,#cba47a,#8a5a2b 55%,#4f3018)" } },
   "Buckle Up": {
-    short: "Buckle Up", layout: "split", light: true,
+    short: "Buckle Up", layout: "imageHero",
+    img: "assets/work/buckle-up.png",
     headline: "Plumbing you can trust.", sub: "24/7 service from a team that shows up when it says it will.",
     pal: { bg: "#f1f6fa", ink: "#10222e", sub: "#5d7686", accent: "#1f7fb0",
            photo: "linear-gradient(150deg,#8fc9e8,#2f86b6 55%,#154f6e)" } },

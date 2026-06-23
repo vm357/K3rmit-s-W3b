@@ -29,11 +29,11 @@ function ServicesHeader() {
       <span aria-hidden="true" style={{ position: "absolute", top: 0, left: 0, width: 16, height: 16, background: "var(--color-primary)" }}></span>
       <div aria-hidden="true" className="kw-pulse" style={{ position: "absolute", inset: 0, background: "radial-gradient(100% 80% at 12% 0%, color-mix(in srgb, var(--color-primary) 16%, transparent), transparent 60%)" }}></div>
       <div style={{ ...SV_WRAP, position: "relative" }}>
-        <div style={{ color: "var(--color-primary)", font: "700 13px/1.43 var(--font-sans)", textTransform: "uppercase", letterSpacing: ".7px", marginBottom: "var(--space-lg)" }}>What we do</div>
-        <h1 style={{ margin: 0, color: "var(--color-on-dark)", font: "700 clamp(34px,5vw,56px)/1.05 var(--font-sans)", letterSpacing: "-0.02em", maxWidth: 820 }}>
+        <div className="kw-hero-in" style={{ color: "var(--color-primary)", font: "700 13px/1.43 var(--font-sans)", textTransform: "uppercase", letterSpacing: ".7px", marginBottom: "var(--space-lg)" }}>What we do</div>
+        <h1 className="kw-hero-in kw-hero-in--d1" style={{ margin: 0, color: "var(--color-on-dark)", font: "700 clamp(34px,5vw,56px)/1.05 var(--font-sans)", letterSpacing: "-0.02em", maxWidth: 820 }}>
           Design, build, and speed — under one lily pad.
         </h1>
-        <p style={{ margin: "var(--space-lg) 0 0", color: "var(--color-on-dark-mute)", font: "400 clamp(16px,2vw,20px)/1.5 var(--font-sans)", maxWidth: 640 }}>
+        <p className="kw-hero-in kw-hero-in--d2" style={{ margin: "var(--space-lg) 0 0", color: "var(--color-on-dark-mute)", font: "400 clamp(16px,2vw,20px)/1.5 var(--font-sans)", maxWidth: 640 }}>
           Most agencies hand you off three times before launch. We don’t. The same small team that
           designs your site builds it, ships it, and tends it.
         </p>
@@ -73,9 +73,9 @@ function Disciplines() {
     <section style={{ background: "var(--color-canvas)", padding: SV_PAD }}>
       <div style={{ ...SV_WRAP, display: "flex", flexDirection: "column", gap: "var(--space-section)" }}>
         {DISCIPLINES.map((d, i) => (
-          <div key={d.id} id={d.id} style={{ display: "grid", gridTemplateColumns: "0.9fr 1.1fr", gap: "var(--space-section)", alignItems: "start", scrollMarginTop: 110 }} className="kw-hero-split">
+          <div key={d.id} id={d.id} style={{ display: "grid", gridTemplateColumns: "0.9fr 1.1fr", gap: "var(--space-section)", alignItems: "start", scrollMarginTop: 110 }} className="kw-hero-split kw-discipline">
             <Reveal y={20}>
-              <div style={{ color: "var(--color-primary)", font: "700 44px/1 var(--font-sans)", letterSpacing: "-0.03em", marginBottom: "var(--space-md)" }}>{d.n}</div>
+              <div className="kw-discipline-n" style={{ color: "var(--color-primary)", font: "700 44px/1 var(--font-sans)", letterSpacing: "-0.03em", marginBottom: "var(--space-md)" }}>{d.n}</div>
               <h2 style={{ margin: "0 0 var(--space-md)", color: "var(--color-ink)", font: "700 clamp(26px,3vw,34px)/1.12 var(--font-sans)", letterSpacing: "-0.01em" }}>{d.t}</h2>
               <DrawLine delay={160} style={{ marginBottom: "var(--space-md)" }} />
               <p style={{ margin: 0, color: "var(--color-primary-dark)", font: "700 18px/1.4 var(--font-sans)" }}>{d.lead}</p>
@@ -87,8 +87,8 @@ function Disciplines() {
               <Reveal y={20} delay={170}>
                 <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-md) var(--space-xl)" }} className="kw-list-2">
                   {d.items.map((it) => (
-                    <li key={it} style={{ display: "flex", gap: "var(--space-sm)", alignItems: "flex-start", color: "var(--color-body)", font: "400 15px/1.45 var(--font-sans)" }}>
-                      <span aria-hidden="true" style={{ width: 8, height: 8, background: "var(--color-primary)", borderRadius: 2, marginTop: 6, flex: "none" }}></span>
+                    <li key={it} className="kw-discipline-item" style={{ display: "flex", gap: "var(--space-sm)", alignItems: "flex-start", color: "var(--color-body)", font: "400 15px/1.45 var(--font-sans)" }}>
+                      <span aria-hidden="true" className="kw-discipline-dot" style={{ width: 8, height: 8, background: "var(--color-primary)", borderRadius: 2, marginTop: 6, flex: "none" }}></span>
                       {it}
                     </li>
                   ))}
@@ -129,7 +129,7 @@ function Packages() {
         </div>
         <Reveal y={16} delay={120}>
           <div style={{ display: "flex", alignItems: "center", gap: "var(--space-lg)", flexWrap: "wrap", marginTop: "var(--space-xl)" }}>
-            <Button variant="primary" as="a" href="Contact.html">Get a quote</Button>
+            <Button variant="primary" as="a" href="Contact.html" className="kw-cta-btn kw-cta-btn--primary">Get a quote</Button>
             <p style={{ margin: 0, color: "var(--color-mute)", font: "400 14px/1.5 var(--font-sans)", maxWidth: 460 }}>
               Every project is quoted to fit — tell us what you need and we’ll send a straight, fixed price. No surprises.
             </p>
@@ -152,8 +152,8 @@ function ServicesCta() {
         </Reveal>
         <Reveal y={16} delay={100}>
           <div style={{ display: "flex", gap: "var(--space-md)", flexWrap: "wrap" }}>
-            <Button variant="primary" size="lg" as="a" href="Contact.html">Start a project</Button>
-            <Button variant="outline-on-dark" size="lg" as="a" href="Work.html">See the work</Button>
+            <Button variant="primary" size="lg" as="a" href="Contact.html" className="kw-cta-btn kw-cta-btn--primary">Start a project</Button>
+            <Button variant="outline-on-dark" size="lg" as="a" href="Projects.html" className="kw-cta-btn kw-cta-btn--outline">See the work</Button>
           </div>
         </Reveal>
       </div>

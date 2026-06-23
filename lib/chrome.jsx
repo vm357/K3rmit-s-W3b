@@ -73,7 +73,7 @@ function Nav({ current = "home" }) {
   }, []);
 
   const links = [
-    { id: "work", label: "Work", href: "Work.html" },
+    { id: "work", label: "Projects", href: "Projects.html" },
     { id: "services", label: "Services", href: "Services.html" },
     { id: "why", label: "Why", href: "Why.html" },
     { id: "contact", label: "Contact", href: "Contact.html" },
@@ -119,7 +119,7 @@ function Nav({ current = "home" }) {
         </nav>
         {/* desktop CTA */}
         <span className="kw-nav-cta">
-          <Button variant="primary" size="sm" as="a" href="Contact.html">Start a project</Button>
+          <Button variant="primary" size="sm" as="a" href="Contact.html" className="kw-cta-btn kw-cta-btn--primary">Start a project</Button>
         </span>
         {/* mobile hamburger toggle */}
         <button type="button" className="kw-burger" aria-label={open ? "Close menu" : "Open menu"}
@@ -190,7 +190,7 @@ function Footer() {
               kermitwebcraft@gmail.com
             </a>
             <nav style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-lg)", marginTop: "var(--space-xl)" }}>
-              {[["Home", "index.html"], ["Work", "Work.html"], ["Services", "Services.html"], ["Why", "Why.html"], ["Contact", "Contact.html"]].map(([label, href]) => (
+              {[["Home", "index.html"], ["Projects", "Projects.html"], ["Services", "Services.html"], ["Why", "Why.html"], ["Contact", "Contact.html"]].map(([label, href]) => (
                 <a key={label} href={href} style={{ color: "var(--color-on-dark-mute)", font: "700 14px/1 var(--font-sans)", textDecoration: "none" }}
                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-primary)")}
                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-on-dark-mute)")}>{label}</a>
@@ -204,7 +204,7 @@ function Footer() {
                       padding: "var(--space-xl) 0", flexWrap: "wrap" }}>
           <span style={{ color: "var(--color-mute)", font: "700 10px/1.5 var(--font-sans)",
                          textTransform: "uppercase", letterSpacing: ".5px" }}>
-            © 2026 Kermit Webcraft. All Rights Reserved · It’s not easy being seen. We make it easier.
+            © 2026 Kermit Webcraft. All rights reserved · It’s not easy being seen. We make it easier.
           </span>
           <span style={{ display: "inline-flex", alignItems: "center", gap: "var(--space-sm)", color: "var(--color-mute)", font: "400 12px/1.25 var(--font-sans)" }}>
             <a href="Privacy.html" style={{ color: "var(--color-on-dark-mute)", textDecoration: "none" }}

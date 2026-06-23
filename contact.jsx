@@ -97,7 +97,7 @@ function ContactForm() {
   }
 
   return (
-    <form onSubmit={submit} noValidate
+    <form onSubmit={submit} noValidate className="kw-hero-in kw-hero-in--d1"
       style={{ border: "1px solid var(--color-hairline)", borderRadius: "var(--radius-sm)", padding: "var(--space-xxl)", position: "relative", background: "var(--color-canvas)", display: "flex", flexDirection: "column", gap: "var(--space-lg)" }}>
       <span aria-hidden="true" style={{ position: "absolute", top: 0, left: 0, width: 12, height: 12, background: "var(--color-primary)" }}></span>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-lg)" }} className="kw-list-2">
@@ -151,7 +151,7 @@ function ContactForm() {
         </div>
       )}
       <div style={{ display: "flex", alignItems: "center", gap: "var(--space-lg)", flexWrap: "wrap", marginTop: "var(--space-xs)" }}>
-        <Button variant="primary" size="lg" disabled={sending}>{sending ? "Sending…" : "Send it our way"}</Button>
+        <Button variant="primary" size="lg" disabled={sending} className="kw-cta-btn kw-cta-btn--primary">{sending ? "Sending…" : "Send it our way"}</Button>
         <span style={{ color: "var(--color-mute)", font: "400 13px/1.4 var(--font-sans)" }}>We reply within one business day. No newsletters, ever.</span>
       </div>
     </form>
@@ -165,7 +165,7 @@ function ContactAside() {
     ["We scope it", "A fixed quote and timeline before any work begins."],
   ];
   return (
-    <div>
+    <div className="kw-hero-in">
       <Badge variant="accent">Booking Q3 2026</Badge>
       <h1 style={{ margin: "var(--space-lg) 0 var(--space-md)", color: "var(--color-ink)", font: "700 clamp(32px,4.5vw,46px)/1.06 var(--font-sans)", letterSpacing: "-0.02em" }}>
         Start a project.

@@ -15,26 +15,26 @@ function WhyHero() {
       <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(90% 80% at 85% 8%, rgba(118,185,0,.14), transparent 58%)" }}></div>
       <div style={{ ...WY_WRAP, position: "relative", display: "grid", gridTemplateColumns: "1.15fr 0.85fr", gap: "var(--space-section)", alignItems: "center" }} className="kw-hero-split">
         <div>
-          <Reveal>
+          <Reveal now>
             <div style={{ color: "var(--color-primary)", font: "700 13px/1.43 var(--font-sans)", textTransform: "uppercase", letterSpacing: ".7px", marginBottom: "var(--space-lg)" }}>Why a website</div>
           </Reveal>
-          <Reveal delay={80}>
+          <Reveal now delay={80}>
             <h1 style={{ margin: 0, color: "var(--color-on-dark)", font: "700 clamp(34px,5vw,58px)/1.04 var(--font-sans)", letterSpacing: "-0.02em" }}>
               If you don’t show up,<br /><span style={{ color: "var(--color-primary)" }}>you don’t exist.</span>
             </h1>
           </Reveal>
-          <Reveal delay={160}>
+          <Reveal now delay={160}>
             <p style={{ margin: "var(--space-lg) 0 var(--space-xl)", color: "var(--color-on-dark-mute)", font: "400 clamp(17px,2vw,20px)/1.55 var(--font-sans)", maxWidth: 520 }}>
               Your future customers are searching right now — comparing tabs, weighing trust,
               deciding who to call. A website is how you get into that shortlist instead of
               watching a competitor take the job.
             </p>
           </Reveal>
-          <Reveal delay={240}>
-            <Button variant="primary" size="lg" as="a" href="Contact.html">Start a project</Button>
+          <Reveal now delay={240}>
+            <Button variant="primary" size="lg" as="a" href="Contact.html" className="kw-cta-btn kw-cta-btn--primary">Start a project</Button>
           </Reveal>
         </div>
-        <Reveal delay={200} y={24}>
+        <Reveal now delay={200} y={24}>
           <div style={{ border: "1px solid var(--color-hairline-strong)", borderRadius: "var(--radius-sm)", padding: "var(--space-xxl)", background: "var(--color-surface-elevated)", position: "relative" }}>
             <span aria-hidden="true" style={{ position: "absolute", top: 0, left: 0, width: 12, height: 12, background: "var(--color-primary)" }}></span>
             <div style={{ color: "var(--color-on-dark)", font: "700 clamp(48px,6vw,72px)/1 var(--font-sans)", letterSpacing: "-0.03em" }}>
@@ -69,15 +69,17 @@ function WhyProblem() {
         </Reveal>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "var(--space-xl)" }} className="kw-grid-3">
           {cols.map((c, i) => (
-            <Reveal key={c.k} delay={i * 90}>
-              <Card cornerSquare corner="top-left" padding="xxl" style={{ height: "100%" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "var(--space-sm)", marginBottom: "var(--space-md)" }}>
-                  <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 30, height: 30, background: "var(--color-ink)", color: "var(--color-on-dark)", font: "700 14px/1 var(--font-sans)", borderRadius: "var(--radius-sm)" }}>{c.k}</span>
-                  <h3 style={{ margin: 0, color: "var(--color-ink)", font: "700 20px/1.2 var(--font-sans)" }}>{c.t}</h3>
-                </div>
-                <div style={{ color: "var(--color-primary-dark)", font: "700 15px/1.4 var(--font-sans)", marginBottom: "var(--space-md)" }}>{c.eq}</div>
-                <p style={{ margin: 0, color: "var(--color-body)", font: "400 15px/1.6 var(--font-sans)" }}>{c.b}</p>
-              </Card>
+            <Reveal key={c.k} delay={i * 90} style={{ height: "100%" }}>
+              <div className="kw-lift-card" style={{ height: "100%" }}>
+                <Card cornerSquare corner="top-left" padding="xxl" className="kw-card-inner" style={{ height: "100%" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "var(--space-sm)", marginBottom: "var(--space-md)" }}>
+                    <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 30, height: 30, background: "var(--color-ink)", color: "var(--color-on-dark)", font: "700 14px/1 var(--font-sans)", borderRadius: "var(--radius-sm)" }}>{c.k}</span>
+                    <h3 style={{ margin: 0, color: "var(--color-ink)", font: "700 20px/1.2 var(--font-sans)" }}>{c.t}</h3>
+                  </div>
+                  <div style={{ color: "var(--color-primary-dark)", font: "700 15px/1.4 var(--font-sans)", marginBottom: "var(--space-md)" }}>{c.eq}</div>
+                  <p style={{ margin: 0, color: "var(--color-body)", font: "400 15px/1.6 var(--font-sans)" }}>{c.b}</p>
+                </Card>
+              </div>
             </Reveal>
           ))}
         </div>
@@ -134,7 +136,7 @@ function WhyStorefront() {
   ];
   return (
     <section style={{ position: "relative", background: "var(--color-surface-dark)", padding: WY_PAD, overflow: "hidden" }}>
-      <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(80% 70% at 12% 10%, rgba(118,185,0,.12), transparent 58%)" }}></div>
+      <div aria-hidden="true" className="kw-storefront-glow" style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(80% 70% at 12% 10%, rgba(118,185,0,.2), transparent 58%)" }}></div>
       <div style={{ ...WY_WRAP, position: "relative" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-section)", alignItems: "center" }} className="kw-hero-split">
           <Reveal>
@@ -152,7 +154,7 @@ function WhyStorefront() {
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-md)" }}>
             {points.map((p, i) => (
               <Reveal key={p.t} delay={i * 90}>
-                <div style={{ borderLeft: "2px solid var(--color-primary)", paddingLeft: "var(--space-lg)" }}>
+                <div className="kw-storefront-point" style={{ borderLeft: "2px solid var(--color-primary)", paddingLeft: "var(--space-lg)" }}>
                   <h3 style={{ margin: "0 0 var(--space-xs)", color: "var(--color-on-dark)", font: "700 17px/1.3 var(--font-sans)" }}>{p.t}</h3>
                   <p style={{ margin: 0, color: "var(--color-on-dark-mute)", font: "400 15px/1.55 var(--font-sans)" }}>{p.b}</p>
                 </div>
@@ -166,6 +168,34 @@ function WhyStorefront() {
 }
 
 /* ---------- FLYWHEEL + CLOSING CTA ---------- */
+function ChainFlow({ chain }) {
+  const ref = React.useRef(null);
+  const [play, setPlay] = React.useState(false);
+  React.useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const el = ref.current;
+    if (reduce || !el || !("IntersectionObserver" in window)) { setPlay(true); return; }
+    const io = new IntersectionObserver((es) => {
+      if (es[0].isIntersecting) { setPlay(true); io.disconnect(); }
+    }, { threshold: 0.45 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return (
+    <div ref={ref} className={"kw-chain" + (play ? " kw-chain--play" : "")} style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: "var(--space-sm)", marginBottom: "var(--space-section)" }}>
+      {chain.map((c, i) => (
+        <React.Fragment key={c}>
+          <span className="kw-chain-chip" style={{ "--d": i * 130 + "ms", font: "700 15px/1 var(--font-sans)", padding: "12px 18px", borderRadius: "var(--radius-sm)",
+                         color: i === chain.length - 1 ? "var(--color-on-primary)" : "var(--color-ink)",
+                         background: i === chain.length - 1 ? "var(--color-primary)" : "var(--color-surface-soft)",
+                         border: i === chain.length - 1 ? "none" : "1px solid var(--color-hairline)" }}>{c}</span>
+          {i < chain.length - 1 && <span aria-hidden="true" className="kw-chain-arrow" style={{ "--d": (i * 130 + 65) + "ms", color: "var(--color-primary)", font: "700 16px/1 var(--font-sans)" }}>→</span>}
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
+
 function WhyClose() {
   const chain = ["Website", "Visibility", "Trust", "Leads", "Jobs", "Revenue"];
   return (
@@ -178,17 +208,7 @@ function WhyClose() {
           </h2>
         </Reveal>
         <Reveal delay={80}>
-          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: "var(--space-sm)", marginBottom: "var(--space-section)" }}>
-            {chain.map((c, i) => (
-              <React.Fragment key={c}>
-                <span style={{ font: "700 15px/1 var(--font-sans)", padding: "12px 18px", borderRadius: "var(--radius-sm)",
-                               color: i === chain.length - 1 ? "var(--color-on-primary)" : "var(--color-ink)",
-                               background: i === chain.length - 1 ? "var(--color-primary)" : "var(--color-surface-soft)",
-                               border: i === chain.length - 1 ? "none" : "1px solid var(--color-hairline)" }}>{c}</span>
-                {i < chain.length - 1 && <span aria-hidden="true" style={{ color: "var(--color-primary)", font: "700 16px/1 var(--font-sans)" }}>→</span>}
-              </React.Fragment>
-            ))}
-          </div>
+          <ChainFlow chain={chain} />
         </Reveal>
         <Reveal delay={120}>
           <div style={{ background: "var(--color-surface-dark)", borderRadius: "var(--radius-sm)", padding: "clamp(32px,5vw,56px)", position: "relative", overflow: "hidden", textAlign: "center" }}>
@@ -203,8 +223,8 @@ function WhyClose() {
                 consistently, while you focus on the work. Let’s build the thing that does the convincing for you.
               </p>
               <div style={{ display: "flex", gap: "var(--space-md)", justifyContent: "center", flexWrap: "wrap" }}>
-                <Button variant="primary" size="lg" as="a" href="Contact.html">Start a project</Button>
-                <Button variant="outline-on-dark" size="lg" as="a" href="Work.html">See the work</Button>
+                <Button variant="primary" size="lg" as="a" href="Contact.html" className="kw-cta-btn kw-cta-btn--primary">Start a project</Button>
+                <Button variant="outline-on-dark" size="lg" as="a" href="Projects.html" className="kw-cta-btn kw-cta-btn--outline">See the work</Button>
               </div>
             </div>
           </div>

@@ -5,14 +5,20 @@
 
 /* Reveal-on-scroll wrapper. Default is VISIBLE; only below-the-fold
    elements get hidden-then-animated, so content is never stuck hidden. */
-function Reveal({ children, delay = 0, y = 16, style }) {
+function Reveal({ children, delay = 0, y = 16, style, now = false }) {
   const ref = React.useRef(null);
-  const [shown, setShown] = React.useState(true);
-  const [animate, setAnimate] = React.useState(false);
+  const [shown, setShown] = React.useState(!now);
+  const [animate, setAnimate] = React.useState(now);
   React.useLayoutEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const el = ref.current;
-    if (reduce || !el) return;
+    if (reduce || !el) { setShown(true); return; }
+    if (now) {
+      // Mount-triggered entrance (for above-the-fold heroes).
+      setShown(false); setAnimate(true);
+      let raf = requestAnimationFrame(() => { raf = requestAnimationFrame(() => setShown(true)); });
+      return () => cancelAnimationFrame(raf);
+    }
     const rect = el.getBoundingClientRect();
     if (rect.top <= window.innerHeight) return; // above/at fold → stay visible
     setShown(false); setAnimate(true);
