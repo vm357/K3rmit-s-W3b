@@ -19,7 +19,7 @@ function Hero({ dark, layout }) {
 
   const heading =
   <h1 style={{ ...{ margin: 0, color: ink, font: "700 clamp(36px, 5.2vw, 60px)/1.04 var(--font-sans)", letterSpacing: "-0.02em" }, color: "rgb(255, 255, 255)" }}>
-      We Design.<br /><span style={{ color: "var(--color-primary)" }}>We Craft.</span><br /><span style={{ color: "rgb(255, 255, 255)" }}>We Care.</span>
+      Web Design.<br /><span style={{ color: "var(--color-primary)" }}>Web Craft.</span><br /><span style={{ color: "rgb(255, 255, 255)" }}>Web Care.</span>
     </h1>;
 
   const tagline =
@@ -207,9 +207,9 @@ function Stats() {
 
 /* ---------- WORK PREVIEW ---------- */
 const FEATURED = [
-{ t: "P&E Remodeling Solutions", cat: "Construction", g: "linear-gradient(135deg,#10243a,#1c6e8e)", tag: "Design + Build" },
-{ t: "Buckle Up", cat: "Professional", g: "linear-gradient(135deg,#10161d,#1f3550)", tag: "Design + Build" },
-{ t: "Casa Bueno", cat: "Professional", g: "linear-gradient(135deg,#0e2a24,#1f7a63)", tag: "Rebuild" }];
+{ t: "Casa Bueno", cat: "Real Estate", g: "linear-gradient(135deg,#0e2a24,#1f7a63)", tag: "Rebuild", url: "https://sellwithbueno.com/" },
+{ t: "P&E Remodeling Solutions", cat: "Construction", g: "linear-gradient(135deg,#10243a,#1c6e8e)", tag: "Design + Build", url: "https://vm357.github.io/P-E-Remodeling-Solutions/index.html#top" },
+{ t: "United Automotive Consultants", cat: "Professional", g: "linear-gradient(135deg,#2a230f,#5e4b1c)", tag: "Design + Build", url: "https://vm357.github.io/United-Automotive-Consultants/index.html" }];
 
 function WorkPreview() {
   return (
@@ -227,7 +227,7 @@ function WorkPreview() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "var(--space-xl)" }} className="kw-grid-3">
           {FEATURED.map((w, i) =>
           <Reveal key={w.t} delay={i * 110} y={28}>
-              <a href="Projects.html" style={{ textDecoration: "none", display: "block" }} className="kw-work-card">
+              <a href={w.url || "Projects.html"} {...(w.url ? { target: "_blank", rel: "noopener noreferrer" } : {})} style={{ textDecoration: "none", display: "block" }} className="kw-work-card">
                 <Card cornerSquare padding="none" className="kw-card-inner" style={{ overflow: "hidden", height: "100%" }}>
                   <div style={{ position: "relative", width: "100%", aspectRatio: "4 / 3", containerType: "inline-size", background: "var(--color-surface-soft)", overflow: "hidden", borderBottom: "1px solid var(--color-hairline)" }}>
                     <SiteMock title={w.t} />
@@ -245,6 +245,31 @@ function WorkPreview() {
             </Reveal>
           )}
         </div>
+      </div>
+    </section>);
+
+}
+
+/* ---------- INSTAGRAM ---------- */
+function InstaBridge() {
+  return (
+    <section style={{ background: "var(--color-surface-soft)", padding: "clamp(48px,6vw,80px) clamp(20px,5vw,48px)", borderTop: "1px solid var(--color-hairline)" }}>
+      <div style={{ ...WRAP, display: "grid", gridTemplateColumns: "1.15fr .85fr", gap: "var(--space-section)", alignItems: "center" }} className="kw-hero-split">
+        <Reveal y={20}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: "var(--space-sm)", color: "var(--color-mute)", font: "700 13px/1.43 var(--font-sans)", textTransform: "uppercase", letterSpacing: ".7px", marginBottom: "var(--space-md)" }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"></circle></svg>
+            Instagram
+          </div>
+          <h2 style={{ margin: 0, color: "var(--color-ink)", font: "700 clamp(26px,3.2vw,36px)/1.15 var(--font-sans)", letterSpacing: "-0.01em" }}>Watch the builds take shape.</h2>
+          <p style={{ margin: "var(--space-md) 0 0", color: "var(--color-body)", font: "400 17px/1.5 var(--font-sans)", maxWidth: 520 }}>
+            Work in progress, launches, and the small details that don’t make it into a case study. Follow along at @kermitwebcraft.
+          </p>
+        </Reveal>
+        <Reveal y={20} delay={100}>
+          <div style={{ display: "flex", justifyContent: "flex-end" }} className="kw-insta-cta">
+            <Button variant="outline" size="lg" as="a" href="https://www.instagram.com/kermitwebcraft/" target="_blank" rel="noopener noreferrer" className="kw-cta-btn kw-cta-btn--outline-light">Follow @kermitwebcraft</Button>
+          </div>
+        </Reveal>
       </div>
     </section>);
 

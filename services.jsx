@@ -20,7 +20,7 @@ const DISCIPLINES = [
 
 const OFFERING = [
   { n: "01", t: "We build it", b: "A custom website, designed and hand-coded around your business — fast, responsive, and easy on the eye. Built once, built right, no page-builder shortcuts." },
-  { n: "02", t: "We host & maintain it", b: "Once it’s live, we keep it that way: reliable hosting, an SSL certificate, updates, backups, and the small edits that keep it current. You never touch a server." },
+  { n: "02", t: "We host & maintain it", b: "Once it’s live, we keep it that way: reliable hosting, an SSL certificate, updates, backups, and a warranty that keeps your investment protected. You never touch a server." },
 ];
 
 function ServicesHeader() {

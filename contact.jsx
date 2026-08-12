@@ -36,6 +36,7 @@ function ContactForm() {
   const [sent, setSent] = React.useState(false);
   const [sending, setSending] = React.useState(false);
   const [sendError, setSendError] = React.useState("");
+  const botField = React.useRef(null);
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
   const validate = () => {
@@ -49,6 +50,9 @@ function ContactForm() {
   };
   const submit = async (e) => {
     e.preventDefault();
+    // Honeypot: bots fill hidden fields, humans can't see them. Show success
+    // so the bot doesn't retry, but send nothing.
+    if (botField.current && botField.current.value) { setSent(true); return; }
     const er = validate();
     setErrors(er);
     if (Object.keys(er).length !== 0) return;
@@ -64,6 +68,7 @@ function ContactForm() {
       body.append("phone", form.phone);
       body.append("message", form.message);
       body.append("_subject", `New lead — ${form.name} (${form.type})`);
+      body.append("_gotcha", "");
 
       const res = await fetch(LEADS_ENDPOINT, {
         method: "POST",
@@ -97,9 +102,12 @@ function ContactForm() {
   }
 
   return (
-    <form onSubmit={submit} noValidate className="kw-hero-in kw-hero-in--d1"
-      style={{ border: "1px solid var(--color-hairline)", borderRadius: "var(--radius-sm)", padding: "var(--space-xxl)", position: "relative", background: "var(--color-canvas)", display: "flex", flexDirection: "column", gap: "var(--space-lg)" }}>
+    <form onSubmit={submit} noValidate className="kw-hero-in kw-hero-in--d1"      style={{ border: "1px solid var(--color-hairline)", borderRadius: "var(--radius-sm)", padding: "var(--space-xxl)", position: "relative", background: "var(--color-canvas)", display: "flex", flexDirection: "column", gap: "var(--space-lg)" }}>
       <span aria-hidden="true" style={{ position: "absolute", top: 0, left: 0, width: 12, height: 12, background: "var(--color-primary)" }}></span>
+      <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", top: 0, width: 1, height: 1, overflow: "hidden" }}>
+        <label htmlFor="kw-hp">Leave this field empty</label>
+        <input id="kw-hp" ref={botField} type="text" name="_gotcha" tabIndex={-1} autoComplete="off" />
+      </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-lg)" }} className="kw-list-2">
         <div>
           <label style={fieldLabel} htmlFor="f-name">Name</label>
@@ -129,7 +137,7 @@ function ContactForm() {
           {PROJECT_TYPES.map((t) => {
             const active = form.type === t;
             return (
-              <button type="button" key={t} onClick={() => setForm((f) => ({ ...f, type: t }))}
+              <button type="button" key={t} onClick={() => setForm((f) => ({ ...f, type: t }))} className={active ? "kw-type-chip kw-type-chip--on" : "kw-type-chip"}
                 style={{ font: "700 14px/1 var(--font-sans)", padding: "10px 16px", cursor: "pointer",
                          borderRadius: "var(--radius-sm)", transition: "all .12s linear",
                          border: active ? "2px solid var(--color-ink)" : "2px solid var(--color-hairline)",
@@ -187,7 +195,14 @@ function ContactAside() {
       </div>
       <div style={{ marginTop: "var(--space-xl)" }}>
         <div style={{ color: "var(--color-mute)", font: "700 12px/1.4 var(--font-sans)", textTransform: "uppercase", letterSpacing: ".5px", marginBottom: 4 }}>Prefer email?</div>
-        <a href="mailto:kermitwebcraft@gmail.com" style={{ color: "var(--color-link-blue)", font: "400 16px/1.5 var(--font-sans)" }}>kermitwebcraft@gmail.com</a>
+        <a href="mailto:kermitwebcraft@gmail.com" className="kw-social-light" style={{ color: "var(--color-link-blue)", font: "400 16px/1.5 var(--font-sans)", textDecoration: "none" }}>kermitwebcraft@gmail.com</a>
+      </div>
+      <div style={{ marginTop: "var(--space-xl)" }}>
+        <div style={{ color: "var(--color-mute)", font: "700 12px/1.4 var(--font-sans)", textTransform: "uppercase", letterSpacing: ".5px", marginBottom: 4 }}>Interact with us on Instagram!</div>
+        <a href="https://www.instagram.com/kermitwebcraft/" target="_blank" rel="noopener noreferrer" className="kw-social-light"
+           style={{ display: "inline-flex", alignItems: "center", gap: "var(--space-sm)", color: "var(--color-link-blue)", font: "400 16px/1.5 var(--font-sans)", textDecoration: "none" }}>
+          @kermitwebcraft
+        </a>
       </div>
     </div>
   );

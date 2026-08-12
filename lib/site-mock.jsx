@@ -110,9 +110,8 @@ function SiteMock({ title }) {
   if (t.img) {
     return (
       <div style={{ position: "absolute", inset: 0, overflow: "hidden", background: p.bg }}>
-        <img src={t.img} alt="" aria-hidden="true"
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", filter: "blur(14px) saturate(1.1)", transform: "scale(1.15)", opacity: 0.55 }} />
-        <img src={t.img} alt={`${title} website`}
+        <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: `url(${t.img})`, backgroundSize: "cover", backgroundPosition: "center", filter: "blur(14px) saturate(1.1)", transform: "scale(1.15)", opacity: 0.55 }}></div>
+        <img src={t.img} alt={`${title} website`} loading="lazy" decoding="async"
           style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "auto", display: "block", boxShadow: "0 6px 18px rgba(0,0,0,.18)" }} />
       </div>
     );

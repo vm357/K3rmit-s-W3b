@@ -8,10 +8,10 @@ const WK_PAD = "var(--space-section) clamp(20px, 5vw, 48px)";
 
 const PROJECTS = [
 { t: "P&E Remodeling Solutions", cat: "Construction", g: "linear-gradient(135deg,#10243a,#1c6e8e)", year: "2025", metric: "0.7s", metricLabel: "median load time", tag: "Design + Build", url: "https://vm357.github.io/P-E-Remodeling-Solutions/index.html#top", blurb: "A hand-built site with a project gallery that loads instantly and a quote form that converts." },
-{ t: "Buckle Up", cat: "Professional", g: "linear-gradient(135deg,#241a2e,#5e3a7a)", year: "2024", metric: "+44%", metricLabel: "in leads", tag: "Design + Build", url: "https://vm357.github.io/Buckle-Up/", url: "https://vm357.github.io/Buckle-Up/", blurb: "A fast, mobile-first build that turned a 12-truck operation’s site into its busiest phone line." },
-{ t: "Casa Bueno", cat: "Professional", g: "linear-gradient(135deg,#0e2a24,#1f7a63)", year: "2025", metric: "0.8s", metricLabel: "median load time", tag: "Rebuild", blurb: "A roaster’s shop with subscriptions, gift options, and a checkout that converts." },
 { t: "United Automotive Consultants", cat: "Professional", g: "linear-gradient(135deg,#2a230f,#7a5e1c)", year: "2024", metric: "+52%", metricLabel: "consult requests", tag: "Design + Build", url: "https://vm357.github.io/United-Automotive-Consultants/index.html", blurb: "A quietly authoritative brand site with service pages that turn research into booked consultations." },
+{ t: "Casa Bueno", cat: "Real Estate", g: "linear-gradient(135deg,#0e2a24,#1f7a63)", year: "2025", metric: "0.8s", metricLabel: "median load time", tag: "Rebuild", url: "https://sellwithbueno.com/", blurb: "A roaster’s shop with subscriptions, gift options, and a checkout that converts." },
 { t: "Angel’s Home Improvement", cat: "Construction", g: "linear-gradient(135deg,#0f2a16,#2f7a3f)", year: "2025", metric: "+38%", metricLabel: "quote requests", tag: "Design + Build", url: "https://vm357.github.io/Angels-Home-Improvements/index.html", blurb: "A remodeler needed a portfolio that shows the work and a quote form that doesn’t scare homeowners off." },
+{ t: "Buckle Up", cat: "Professional", g: "linear-gradient(135deg,#241a2e,#5e3a7a)", year: "2024", metric: "+44%", metricLabel: "in leads", tag: "Design + Build", url: "https://vm357.github.io/Buckle-Up/", blurb: "A fast, mobile-first build that turned a 12-truck operation’s site into its busiest phone line.", hidden: true },
 { t: "Andelina Beauty", cat: "Beauty", g: "linear-gradient(135deg,#3a0f22,#7c1f4a)", year: "2025", metric: "+63%", metricLabel: "online bookings", tag: "Rebuild", blurb: "A three-location beauty brand needed one polished site that funnels visitors straight to booking." }];
 
 
@@ -21,14 +21,14 @@ function WorkHeader() {
       <span aria-hidden="true" style={{ position: "absolute", top: 0, left: 0, width: 16, height: 16, background: "var(--color-primary)" }}></span>
       <div aria-hidden="true" className="kw-pulse" style={{ position: "absolute", inset: 0, background: "radial-gradient(100% 80% at 90% 0%, color-mix(in srgb, var(--color-primary) 16%, transparent), transparent 60%)" }}></div>
       <div style={{ ...WK_WRAP, position: "relative" }}>
-        <div className="kw-hero-in" style={{ color: "var(--color-primary)", font: "700 13px/1.43 var(--font-sans)", textTransform: "uppercase", letterSpacing: ".7px", marginBottom: "var(--space-lg)" }}>SELECTED PROJECTS · 2026</div>
-        <h1 className="kw-hero-in kw-hero-in--d1" style={{ margin: 0, color: "var(--color-on-dark)", font: "700 clamp(34px,5vw,56px)/1.05 var(--font-sans)", letterSpacing: "-0.02em", maxWidth: 820 }}>
+        <Reveal now><div style={{ color: "var(--color-primary)", font: "700 13px/1.43 var(--font-sans)", textTransform: "uppercase", letterSpacing: ".7px", marginBottom: "var(--space-lg)" }}>SELECTED PROJECTS · 2026</div></Reveal>
+        <Reveal now delay={80}><h1 style={{ margin: 0, color: "var(--color-on-dark)", font: "700 clamp(34px,5vw,56px)/1.05 var(--font-sans)", letterSpacing: "-0.02em", maxWidth: 820 }}>
           Ponds we’ve tended, and how they paid off.
-        </h1>
-        <p className="kw-hero-in kw-hero-in--d2" style={{ margin: "var(--space-lg) 0 0", color: "var(--color-on-dark-mute)", font: "400 clamp(16px,2vw,20px)/1.5 var(--font-sans)", maxWidth: 620 }}>
+        </h1></Reveal>
+        <Reveal now delay={160}><p style={{ margin: "var(--space-lg) 0 0", color: "var(--color-on-dark-mute)", font: "400 clamp(16px,2vw,20px)/1.5 var(--font-sans)", maxWidth: 620 }}>
           Every project below is hand-built — designed, coded, and measured. The numbers are real
           outcomes our clients tracked after launch.
-        </p>
+        </p></Reveal>
       </div>
     </section>);
 
@@ -44,9 +44,10 @@ function Metric({ raw }) {
 }
 
 function WorkGrid() {
-  const cats = ["All", "Construction", "Beauty", "Healthcare", "Professional", "E-commerce", "Restaurant"];
+  const cats = ["All", "Construction", "Beauty", "Real Estate", "Professional", "E-commerce", "Restaurant"];
   const [filter, setFilter] = React.useState("All");
-  const shown = filter === "All" ? PROJECTS : PROJECTS.filter((p) => p.cat === filter);
+  const visible = PROJECTS.filter((p) => !p.hidden);
+  const shown = filter === "All" ? visible : visible.filter((p) => p.cat === filter);
   return (
     <section style={{ background: "var(--color-canvas)", padding: WK_PAD }}>
       <div style={WK_WRAP}>
@@ -79,6 +80,20 @@ function WorkGrid() {
             </a>
           </Reveal>
           )}
+          <Reveal delay={(shown.length % 3) * 80} style={{ height: "100%" }}>
+            <a href="Contact.html" className="kw-work-card" style={{ textDecoration: "none", display: "block", height: "100%" }}>
+              <Card padding="none" className="kw-card-inner" style={{ overflow: "hidden", height: "100%", background: "var(--color-surface-soft)", borderStyle: "dashed" }}>
+                <div style={{ position: "relative", width: "100%", aspectRatio: "4 / 3", display: "flex", alignItems: "center", justifyContent: "center", borderBottom: "1px dashed var(--color-hairline)" }}>
+                  <span aria-hidden="true" style={{ width: 40, height: 40, border: "2px solid var(--color-hairline)", borderRadius: "var(--radius-sm)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--color-mute)", font: "400 24px/1 var(--font-sans)" }}>+</span>
+                </div>
+                <div style={{ padding: "var(--space-xl)" }}>
+                  <div style={{ marginBottom: "var(--space-md)" }}><Badge variant="outline">Next up</Badge></div>
+                  <h3 style={{ margin: "0 0 var(--space-lg)", color: "var(--color-mute)", font: "700 19px/1.3 var(--font-sans)" }}>Your project here</h3>
+                  <div style={{ borderTop: "1px dashed var(--color-hairline)", paddingTop: "var(--space-md)", color: "var(--color-mute)", font: "400 13px/1.3 var(--font-sans)" }}>Booking now</div>
+                </div>
+              </Card>
+            </a>
+          </Reveal>
         </div>
       </div>
     </section>);

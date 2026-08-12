@@ -176,6 +176,10 @@ function Footer() {
               <span aria-hidden="true" style={{ color: "var(--color-hairline-strong)" }}>·</span>
               <span style={{ color: "var(--color-on-dark-mute)", font: "400 13px/1 var(--font-sans)" }}>Working with clients everywhere</span>
             </div>
+            <a href="https://www.instagram.com/kermitwebcraft/" target="_blank" rel="noopener noreferrer" aria-label="Kermit Webcraft on Instagram" className="kw-social"
+               style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, marginTop: "var(--space-lg)", border: "1px solid var(--color-hairline-dark, #5e5e5e)", borderRadius: "var(--radius-sm)", color: "var(--color-on-dark-mute)" }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"></circle></svg>
+            </a>
           </div>
 
           <div>
@@ -202,9 +206,11 @@ function Footer() {
         {/* Bottom bar */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "var(--space-lg)",
                       padding: "var(--space-xl) 0", flexWrap: "wrap" }}>
-          <span style={{ color: "var(--color-mute)", font: "700 10px/1.5 var(--font-sans)",
-                         textTransform: "uppercase", letterSpacing: ".5px" }}>
-            © 2026 Kermit Webcraft. All rights reserved · It’s not easy being seen. We make it easier.
+          <span style={{ display: "inline-flex", alignItems: "center", gap: "var(--space-md)", flexWrap: "wrap" }}>
+            <span style={{ color: "var(--color-mute)", font: "700 10px/1.5 var(--font-sans)",
+                           textTransform: "uppercase", letterSpacing: ".5px" }}>
+              © 2026 Kermit Webcraft. All rights reserved · It’s not easy being seen. We make it easier.
+            </span>
           </span>
           <span style={{ display: "inline-flex", alignItems: "center", gap: "var(--space-sm)", color: "var(--color-mute)", font: "400 12px/1.25 var(--font-sans)" }}>
             <a href="Privacy.html" style={{ color: "var(--color-on-dark-mute)", textDecoration: "none" }}

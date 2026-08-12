@@ -115,16 +115,13 @@ function BrowserWireframe({ compact = false }) {
           ))}
         </div>
         {/* chart */}
-        <svg viewBox="0 0 320 120" preserveAspectRatio="none" style={{ width: "100%", height: compact ? 86 : 108, display: "block", overflow: "visible" }}>
+        <svg viewBox="0 0 320 120" style={{ width: "100%", aspectRatio: "320 / 120", height: "auto", display: "block", overflow: "visible" }}>
           <defs>
             <linearGradient id="kwArea" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="var(--color-primary)" stopOpacity="0.34"></stop>
               <stop offset="100%" stopColor="var(--color-primary)" stopOpacity="0"></stop>
             </linearGradient>
           </defs>
-          {[30, 60, 90].map((y) => (
-            <line key={y} x1="0" y1={y} x2="320" y2={y} stroke="var(--color-hairline-strong)" strokeWidth="1" vectorEffect="non-scaling-stroke"></line>
-          ))}
           <polygon points={`0,120 ${pts} 320,120`} fill="url(#kwArea)"></polygon>
           <polyline className="kw-chart-line" points={pts} fill="none" stroke="var(--color-primary)" strokeWidth="2.5"
                     strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke"></polyline>

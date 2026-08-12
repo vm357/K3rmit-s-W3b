@@ -37,6 +37,21 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .kw-discipline:hover .kw-discipline-n, .kw-discipline-item:hover, .kw-discipline-item:hover .kw-discipline-dot { transform: none; }
 }
 
+/* Footer social icon */
+.kw-social { transition: color 120ms linear, border-color 120ms linear; }
+.kw-social:hover { color: var(--color-primary) !important; border-color: var(--color-primary) !important; }
+
+@media (max-width: 980px) { .kw-insta-cta { justify-content: flex-start !important; } }
+
+/* Contact · project-type chips */
+.kw-type-chip { transition: border-color 120ms linear, color 120ms linear, transform 120ms linear !important; }
+.kw-type-chip:hover { border-color: var(--color-primary) !important; color: var(--color-ink) !important; transform: translateY(-2px); }
+.kw-type-chip--on:hover { color: var(--color-on-dark) !important; }
+@media (prefers-reduced-motion: reduce) { .kw-type-chip:hover { transform: none; } }
+
+.kw-social-light { transition: color 120ms linear; }
+.kw-social-light:hover { color: var(--color-primary-dark) !important; }
+
 /* Generic lift-on-hover card wrapper (border→green via inner .kw-card-inner). */
 .kw-lift-card { transition: transform 120ms linear; }
 .kw-lift-card .kw-card-inner { transition: border-color 120ms linear; }
