@@ -208,7 +208,7 @@ function Stats() {
 /* ---------- WORK PREVIEW ---------- */
 const FEATURED = [
 { t: "Casa Bueno", cat: "Real Estate", g: "linear-gradient(135deg,#0e2a24,#1f7a63)", tag: "Rebuild", url: "https://sellwithbueno.com/" },
-{ t: "P&E Remodeling Solutions", cat: "Construction", g: "linear-gradient(135deg,#10243a,#1c6e8e)", tag: "Design + Build", url: "https://vm357.github.io/P-E-Remodeling-Solutions/index.html#top" },
+{ t: "Angel’s Home Improvement", cat: "Construction", g: "linear-gradient(135deg,#0f2a16,#2f7a3f)", tag: "Design + Build", url: "https://angelshomeimprovementsinc.com/" },
 { t: "United Automotive Consultants", cat: "Professional", g: "linear-gradient(135deg,#2a230f,#5e4b1c)", tag: "Design + Build", url: "https://vm357.github.io/United-Automotive-Consultants/index.html" }];
 
 function WorkPreview() {
